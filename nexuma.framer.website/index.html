@@ -15,62 +15,6 @@
     <meta name="viewport" content="width=device-width">
     <meta name="generator" content="Framer 6ae4e96">
     <title>Saas AI — Plan, Launch &amp; Scale Faster</title>
-    <script>(function () {
-            // Early guard script to preserve the local title with minimal overhead
-            var FIXED_TITLE = document.querySelector('head > title')?.textContent || 'Untitled';
-
-            function ensureTitleEl() {
-                var t = document.head.querySelector('title');
-                if (!t) { t = document.createElement('title'); document.head.insertBefore(t, document.head.firstChild); }
-                return t;
-            }
-
-            function setTitleSafe(val) {
-                var t = ensureTitleEl();
-                if (t.textContent !== val) t.textContent = val;
-            }
-
-            // Set initial title immediately
-            setTitleSafe(FIXED_TITLE);
-
-            // Lock down document.title
-            try {
-                Object.defineProperty(document, 'title', {
-                    configurable: true,
-                    enumerable: true,
-                    get: function () {
-                        var t = document.head.querySelector('title');
-                        return t ? t.textContent : FIXED_TITLE;
-                    },
-                    set: function (v) {
-                        setTitleSafe(FIXED_TITLE);
-                        return FIXED_TITLE;
-                    }
-                });
-            } catch (e) { /* fallback to observers only */ }
-
-            // Observe the title element for changes only
-            var titleObserver; var headObserver; var reverting = false;
-            function observe() {
-                var t = ensureTitleEl();
-                if (titleObserver) titleObserver.disconnect();
-                titleObserver = new MutationObserver(function () {
-                    if (reverting) return;
-                    if (t.textContent !== FIXED_TITLE) {
-                        reverting = true; setTitleSafe(FIXED_TITLE); reverting = false;
-                    }
-                });
-                titleObserver.observe(t, { childList: true, characterData: true, subtree: true });
-            }
-
-            // Watch head for title removal/replacement
-            headObserver = new MutationObserver(function () { observe(); });
-            headObserver.observe(document.head, { childList: true });
-
-            observe();
-            window.addEventListener('beforeunload', function () { if (titleObserver) titleObserver.disconnect(); if (headObserver) headObserver.disconnect(); });
-        })();</script>
-
     <meta name="description"
         content="Saas AI helps startup founders prioritize, plan and launch faster — with a glass-clear dashboard designed for speed and clarity.">
     <meta name="framer-search-index"
